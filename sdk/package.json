@@ -1,0 +1,16 @@
+{
+  "name": "delora-sdk",
+  "version": "0.1.0",
+  "description": "HTTP client for Delora API",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  },
+  "files": ["dist"],
+  "license": "MIT"
+}
