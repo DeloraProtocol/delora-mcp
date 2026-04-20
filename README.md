@@ -20,7 +20,7 @@ Copy `env.example` to `.env` and adjust:
 | `PORT` | HTTP server port (when `MCP_TRANSPORT=http`) | `3000` |
 | `HOST` | HTTP bind address | `0.0.0.0` |
 
-When `DELORA_API_KEY` is set, the MCP server forwards it to Delora API as the `x-api-key` header. The key stays server-side in the MCP environment and is not exposed as a tool argument.
+When `DELORA_API_KEY` is set, the MCP server forwards it to Delora API as the `x-api-key` header. In HTTP mode, the server also accepts incoming `x-api-key` or `Authorization: Bearer ...` headers and forwards the resolved key upstream. For HTTP requests, incoming headers take priority over `DELORA_API_KEY`. For stdio, `DELORA_API_KEY` remains the way to provide the key.
 
 ## Run
 
@@ -64,11 +64,16 @@ Server listens on `http://0.0.0.0:3000/mcp`.
   "mcpServers": {
     "delora": {
       "url": "https://mcp.delora.build/mcp",
-      "transport": "streamable-http"
+      "transport": "streamable-http",
+      "headers": {
+        "x-api-key": "YOUR_API_KEY"
+      }
     }
   }
 }
 ```
+
+You can also use `Authorization: Bearer YOUR_API_KEY` instead of `x-api-key` when your MCP client supports custom HTTP headers.
 
 ## Docker
 

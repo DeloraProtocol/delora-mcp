@@ -1,8 +1,8 @@
 import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { apiGet } from "../api.js";
+import type { ApiGet } from "../api.js";
 
-export function registerGetToken(server: McpServer): void {
+export function registerGetToken(server: McpServer, apiGet: ApiGet): void {
   server.registerTool(
     "get_token",
     {

@@ -2,6 +2,7 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import express from "express";
+import { extractApiKeyFromHeaders } from "./api.js";
 import { createServer } from "./server.js";
 
 if (process.env.MCP_TRANSPORT === "http") {
@@ -14,7 +15,10 @@ if (process.env.MCP_TRANSPORT === "http") {
   app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
     res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept");
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Accept, Authorization, x-api-key",
+    );
     if (req.method === "OPTIONS") {
       return res.sendStatus(200);
     }
@@ -22,7 +26,9 @@ if (process.env.MCP_TRANSPORT === "http") {
   });
 
   app.post("/mcp", async (req, res) => {
-    const server = createServer();
+    const server = createServer({
+      apiKey: extractApiKeyFromHeaders(req.headers),
+    });
     const transport = new StreamableHTTPServerTransport({
       sessionIdGenerator: undefined,
     });

@@ -1,6 +1,6 @@
 import { z } from "zod";
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { apiGet } from "../api.js";
+import type { ApiGet } from "../api.js";
 
 const quoteSchema = {
   originChainId: z.number().describe("Origin chain ID (e.g. 1 for Ethereum, 42161 for Arbitrum)"),
@@ -15,7 +15,7 @@ const quoteSchema = {
   slippage: z.number().min(0).max(1).optional().describe("Slippage tolerance 0–1 (e.g. 0.005 for 0.5%)"),
 };
 
-export function registerGetQuote(server: McpServer): void {
+export function registerGetQuote(server: McpServer, apiGet: ApiGet): void {
   server.registerTool(
     "get_quote",
     {
