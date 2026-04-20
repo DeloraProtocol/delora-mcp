@@ -15,9 +15,12 @@ Copy `env.example` to `.env` and adjust:
 | Variable | Description | Default |
 |----------|-------------|---------|
 | `DELORA_API_URL` | Delora API base URL | `https://api.delora.build` |
+| `DELORA_API_KEY` | Optional API key forwarded to Delora API as `x-api-key` | unset |
 | `MCP_TRANSPORT` | `stdio` or `http` | `stdio` |
 | `PORT` | HTTP server port (when `MCP_TRANSPORT=http`) | `3000` |
 | `HOST` | HTTP bind address | `0.0.0.0` |
+
+When `DELORA_API_KEY` is set, the MCP server forwards it to Delora API as the `x-api-key` header. The key stays server-side in the MCP environment and is not exposed as a tool argument.
 
 ## Run
 

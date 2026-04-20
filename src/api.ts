@@ -2,6 +2,11 @@ export function getApiBaseUrl(): string {
   return process.env.DELORA_API_URL ?? "https://api.delora.build";
 }
 
+export function getApiKey(): string | undefined {
+  const apiKey = process.env.DELORA_API_KEY?.trim();
+  return apiKey ? apiKey : undefined;
+}
+
 export async function apiGet(
   path: string,
   params?: Record<string, string | number | undefined>,
@@ -17,7 +22,14 @@ export async function apiGet(
     }
   }
 
-  const response = await fetch(url.toString());
+  const headers = new Headers();
+  const apiKey = getApiKey();
+
+  if (apiKey) {
+    headers.set("x-api-key", apiKey);
+  }
+
+  const response = await fetch(url.toString(), { headers });
   let data: unknown;
   try {
     data = await response.json();

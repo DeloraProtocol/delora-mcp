@@ -15,7 +15,7 @@ const skillMd = readFileSync(resolve(__dirname, "../SKILL.md"), "utf-8");
 export function createServer(): McpServer {
   const server = new McpServer({
     name: "delora-mcp",
-    version: "0.1.0",
+    version: "0.1.1",
   });
 
   registerGetInstructions(server, skillMd);

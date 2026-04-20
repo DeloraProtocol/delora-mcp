@@ -1,7 +1,7 @@
 {
   "name": "@deloraprotocol/mcp",
   "scope": "deloraprotocol",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Delora MCP server for cross-chain quotes and tools",
   "type": "module",
   "main": "dist/index.js",
@@ -16,9 +16,20 @@
     "start:http": "MCP_TRANSPORT=http node dist/index.js",
     "prepublishOnly": "node -e \"const p=require('./package.json'); const scope=p.scope||'delora'; const prefix='@'+scope+'/'; if(!p.name.startsWith(prefix)) throw new Error('package name must start with '+prefix);\""
   },
-  "keywords": ["delora", "mcp", "cross-chain", "bridge", "defi", "quote"],
+  "keywords": [
+    "delora",
+    "mcp",
+    "cross-chain",
+    "bridge",
+    "defi",
+    "quote"
+  ],
   "license": "MIT",
-  "files": ["dist", "SKILL.md", "README.md"],
+  "files": [
+    "dist",
+    "SKILL.md",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/DeloraProtocol/delora-mcp.git"
