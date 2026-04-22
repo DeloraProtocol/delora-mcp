@@ -16,7 +16,7 @@ const skillMd = readFileSync(resolve(__dirname, "../SKILL.md"), "utf-8");
 export function createServer(options?: { apiKey?: string }): McpServer {
   const server = new McpServer({
     name: "delora-mcp",
-    version: "0.1.2",
+    version: "0.1.3",
   });
   const apiGet = createApiGet(options);
 
