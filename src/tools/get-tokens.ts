@@ -9,7 +9,7 @@ export function registerGetTokens(server: McpServer, apiGet: ApiGet): void {
       description: "List supported tokens. Optionally filter by chains and/or chainTypes.",
       inputSchema: {
         chains: z.string().optional().describe("Comma-separated chain IDs or identifiers"),
-        chainTypes: z.string().optional().describe("Chain types, e.g. EVM,SOLANA"),
+        chainTypes: z.string().optional().describe("Chain types, e.g. EVM,SVM"),
       },
     },
     async (params) => {

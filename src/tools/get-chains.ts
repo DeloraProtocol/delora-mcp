@@ -6,12 +6,12 @@ export function registerGetChains(server: McpServer, apiGet: ApiGet): void {
   server.registerTool(
     "get_chains",
     {
-      description: "List supported chains. Optionally filter by chainTypes (e.g. EVM,SOLANA).",
+      description: "List supported chains. Optionally filter by chainTypes (e.g. EVM,SVM).",
       inputSchema: {
         chainTypes: z
           .string()
           .optional()
-          .describe("Comma-separated chain types, e.g. EVM,SOLANA"),
+          .describe("Comma-separated chain types, e.g. EVM,SVM"),
       },
     },
     async (params) => {
