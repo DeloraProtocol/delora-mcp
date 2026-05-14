@@ -1,7 +1,8 @@
 {
   "name": "@deloraprotocol/mcp",
   "scope": "deloraprotocol",
-  "version": "0.1.3",
+  "version": "0.1.5",
+  "mcpName": "io.github.DeloraProtocol/delora-mcp",
   "description": "Delora MCP server for cross-chain quotes and tools",
   "type": "module",
   "main": "dist/index.js",

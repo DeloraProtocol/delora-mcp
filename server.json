@@ -1,0 +1,44 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.DeloraProtocol/delora-mcp",
+  "title": "Delora MCP",
+  "description": "Delora MCP server for cross-chain quotes, supported chains, tokens, and tools.",
+  "repository": {
+    "url": "https://github.com/DeloraProtocol/delora-mcp",
+    "source": "github"
+  },
+  "version": "0.1.5",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.delora.build/mcp",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "description": "Optional Delora API key forwarded to Delora API.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@deloraprotocol/mcp",
+      "version": "0.1.5",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "DELORA_API_KEY",
+          "description": "Optional Delora API key forwarded to Delora API as x-api-key.",
+          "isRequired": false,
+          "format": "string",
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}
